@@ -197,6 +197,13 @@ function mayorACien(array) {
    // La función recibe un arreglo con enteros entre 0 y 200.
    // Recorrerlo y retornar un arreglo con todos los valores mayores a 100 (no incluye el 100).
    // Tu código:
+   let mayorQueCien = []
+   for(let i = 0; i < array.length; i++){
+      if(array[i] > 100){
+         mayorQueCien.push(array [i])
+      }
+   }
+   return mayorQueCien
 }
 
 /* ----------------------------------------------------------------------------------
@@ -210,6 +217,21 @@ function breakStatement(num) {
    // la ejecución y retornar el string: "Se interrumpió la ejecución".
    // [PISTA]: utiliza el statement 'break'.
    // Tu código:
+   let nuevoArreglo = []
+   let suma = num
+   for(i = 0; i < 10; i++){
+      suma = suma + 2
+      if(suma === i){
+         break;
+      }else{
+         nuevoArreglo.push(suma)
+      }
+   }
+   if(nuevoArreglo.length < 10){
+      return "Se interrumpió la ejecución";
+   }else{
+      return nuevoArreglo
+   }
 }
 
 function continueStatement(num) {
@@ -219,6 +241,17 @@ function continueStatement(num) {
    // se continua con la siguiente iteración.
    // [PISTA]: utiliza el statement 'continue'.
    // Tu código:
+   let nuevoArreglo1 = [];
+   let suma1 = num
+   for(i = 0; i < 10; i++){
+      if(i === 5){
+         continue;
+      }else{
+         suma1 = suma1 + 2;
+         nuevoArreglo1.push(suma1)
+      }
+   }
+   return nuevoArreglo1
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
