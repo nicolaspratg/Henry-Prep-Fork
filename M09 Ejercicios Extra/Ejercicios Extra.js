@@ -19,15 +19,23 @@ function numberOfCharacters(string) {
    // Las letras deben estar en orden alfabético.
    // [EJEMPLO]: "adsjfdsfsfjsdjfhacabcsbajda" ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 }
    // Tu código:
-   return string
-      .toLowerCase()
-      .split('')
-      .filter(letter => /[a-z]/.test(letter))
-      .reduce((letterCount, letter) => {
-         letterCount[letter] = (letterCount[letter] || 0) + 1;
-         return letterCount;
-      }, {});
-
+   let objeto = {}
+   for (let i = 0 ; i < string.length ; i++){
+      if(objeto.hasOwnProperty(string[i])){ // existe "i" dentro del objeto?
+         objeto[string[i]] = objeto[string[i]] + 1; // si existe, a "i" sumarle 1 (contador)
+      }else{
+         objeto[string[i]] = 1; // si no existe, ingresarlo y darle valor 1
+      }
+   }
+   // Object.keys(objeto) extrae las propiedades del objeto y las mete en un nuevo array para que
+   // .sort() tome esos valores y los ordene alfabeticamente.
+   let letrasOrdenadas = Object.keys(objeto).sort(); 
+   // Creo nuevo objeto para ingresarle los keys anteriores pero ordenados alfabeticamente en la linea 40.
+   let sortedObjeto = {}
+   for(const letra of letrasOrdenadas){
+      sortedObjeto[letra] = objeto[letra]; 
+   }
+   return sortedObjeto
 }
 
 function capToFront(string) {
@@ -36,6 +44,17 @@ function capToFront(string) {
    // Retornar el string.
    // [EJEMPLO]: soyHENRY ---> HENRYsoy
    // Tu código:
+   let caps = [];
+   let nonCaps = [];
+   for(let i = 0 ; i < string.length ; i++){
+      const char = string.charAt(i)
+      if (char === char.toUpperCase()){
+         caps.push(char)
+      }else {
+         nonCaps.push(char)
+      }
+   }
+   return caps.join('') + nonCaps.join('');
 }
 
 function asAmirror(frase) {
@@ -43,6 +62,11 @@ function asAmirror(frase) {
    // La diferencia es que cada palabra estará escrita al inverso.
    // [EJEMPLO]: "The Henry Challenge is close!"  ---> "ehT yrneH egnellahC si !esolc"
    // Tu código:
+      let words = frase.split(' '); // divide la oracion en palabras y crea un array de ellas.
+      let mirroredWords = words.map(function(word) {
+         return word.split('').reverse().join('');
+      });
+      return mirroredWords.join(' ');
 }
 
 function capicua(numero) {
