@@ -73,6 +73,12 @@ function capicua(numero) {
    // Si el número que recibes es capicúa debes retornar el string: "Es capicua".
    // Caso contrario: "No es capicua".
    // Tu código:
+   let numberToString = String(numero);
+   let reversedNumber = numberToString.split('').reverse().join('');
+   if(numberToString === reversedNumber){
+      return "Es capicua"
+   }
+   return "No es capicua"
 }
 
 function deleteAbc(string) {
